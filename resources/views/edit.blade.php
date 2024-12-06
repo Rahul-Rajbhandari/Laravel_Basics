@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="" method="POST">
+<form action="{{route('contact.update',$contact->id)}}" method="POST">
   @csrf
 
   <div class="form-group">

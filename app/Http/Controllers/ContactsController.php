@@ -13,12 +13,9 @@ class ContactsController extends Controller
     }
 
     public function store(Request $request){
-        $name = $request->name;
-        $mobile = $request->mobile;
-
         $contact = new Contact();
-        $contact->name = $name;
-        $contact->mobile = $mobile;
+        $contact->name = $request->name;
+        $contact->mobile =  $request->mobile;
 
         $contact->save();
 
@@ -30,7 +27,20 @@ class ContactsController extends Controller
         return view ('edit',['contact'=>$contact]);
     }
 
-    public function update(){}
+    public function update($id , Request $request){
+        $contact= Contact::find($id);
 
-    public function delete(){}
+        $contact->name = $request->name;
+        $contact->mobile = $request->mobile;
+
+        $contact->update();
+
+        return redirect()->route('contact.index');
+    }
+
+    public function delete($id){
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect()->route('contact.index');
+    }
 }

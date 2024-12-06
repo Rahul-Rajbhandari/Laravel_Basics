@@ -8,10 +8,6 @@
 </head>
 <body>
 
-  {{-- @foreach($users as $user)
-    <h1>{{$user['name']}}</h1>
-  @endforeach --}}
-
   <table class="table">
   <thead>
     <tr>
@@ -29,7 +25,7 @@
       <td>{{$contact->mobile}}</td>
       <td>
         <a href="{{route('contact.edit',$contact->id)}}">Edit</a>
-        <a href="">Delete</a>
+        <a href="{{route('contact.delete',$contact->id)}}">Delete</a>
       </td>
     </tr>
     @endforeach 
